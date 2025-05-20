@@ -65,3 +65,5 @@ Fortran can use **wrappers around C functions**
 | **Condition variables** | Let threads wait for and signal conditions     |
 | **Opaque objects**      | Used through API functions only                |
 | **Naming conventions**  | Help you guess function purposes               |
+
+![1747742258507](images/Pthreads-API/1747742258507.png)
