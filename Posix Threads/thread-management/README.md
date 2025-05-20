@@ -1,4 +1,4 @@
-## **Pthreads Thread Management **
+## **Pthreads Thread Management**
 
 ### **Creating Threads**
 
