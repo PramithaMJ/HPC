@@ -1,4 +1,4 @@
-Mutex Variables Overview
+# Mutex Variables Overview
 
 ## What is a Mutex?
 
