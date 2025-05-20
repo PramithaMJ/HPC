@@ -1,3 +1,4 @@
+Ref: https://hpc-tutorials.llnl.gov/posix/
 # POSIX Threads Example
 
 This repository contains a simple example demonstrating the use of POSIX threads (pthreads) in C/C++.
