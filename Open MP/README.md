@@ -104,6 +104,8 @@ It’s **not perfect**, and the programmer still has responsibilities:
 
 ### **1**. Memory Model: **Shared Memory**
 
+![1747818520300](images/README/1747818520300.png)
+
 **OpenMP** is **built **for **shared **memory **machines****,** where **all **threads **see **the **same **memory******.** That **means:**
 
 * One copy of the data is **shared** among threads.
@@ -134,6 +136,8 @@ You (the programmer) must:
 ### **4.** **Fork-** Join Model (Very **Important)**
 
 **This** is **the** **core** model **of** how **OpenMP** runs **your** code.
+
+![1747818530055](images/README/1747818530055.png)
 
 #### **Process:**
 
@@ -217,3 +221,41 @@ must **manually** sync **memory** **using:**
 * **Memory **is **shared**, **but** you **must **manage consistency **and **I/**O****.**
 * **It** follows **the ****SPMD **model******,** where **all** threads **run** the **same** code **but** can **take** different **actions.**
 * Programmers **are** responsible **for** correctness, **efficiency,** and **safe** parallel execution.
+
+
+## **Compiling OpenMP Programs 
+
+## What Is Compilation?
+
+To use OpenMP in your C/C++ or Fortran program, you need to enable OpenMP features in the compiler using the right flag. Without this flag, your code will be treated like a normal serial program.
+
+### Compiler Support Summary (as of June 2022)
+
+Here are the main compilers used in LLNL systems and what OpenMP version they support:
+
+
+
+| **Compiler**                       | **Version**    | **OpenMP**Support |
+| ---------------------------------- | -------------- | ----------------- |
+| Intel (**C/** C++/Fortran)         | **19.0.4**     | **OpenMP** 5.0   |
+| GNU (GCC/**G++)**                  | **4.9**        | **OpenMP** 4.5   |
+| **PGI (**NVIDIA**HPC**Compilers)   | **22.1**       | **OpenMP** 5.0   |
+| **IBM**XL (**C/** C++/**Fortran)** | **2021.09.22** | **OpenMP** 4.5   |
+
+### Note: Newer compilers may support even later versions of OpenMP (like 5.1 or 5.2), but this depends on system availability.
+
+## How to Enable OpenMP in Your Compiler
+
+To use OpenMP, you must pass a special flag to the compiler during compilation. Here are the flags for each major compiler
+
+
+| **Compiler** | **Platform**               | **Command**Example                                                  | **OpenMP**Flag |
+| ------------ | -------------------------- | ------------------------------------------------------------------- | -------------- |
+| **Intel**    | **Linux**                  | `icc`,`icpc`,`ifort`                                                | `-qopenmp`     |
+| **PGI**      | **Linux**                  | `pgcc`,`pgf77`,`pgf90`                                              | `-mp`          |
+| **GNU**      | **Linux /**IBM**Blue**Gene | `gcc`,`g++`,`gfortran`                                              | `-fopenmp`     |
+| **IBM**XL*   | **Coral**Systems           | `xlc_r`,`xlf_r`,**etc. (**must**end**in`_r` **for**thread-**safe)** | `-qsmp=omp`    |
+
+## Example (C code using GCC):
+
+```gcc -fopenmp myprogram.c -o myprogram ```
